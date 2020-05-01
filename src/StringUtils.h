@@ -28,8 +28,7 @@ Returns a_Dst. */
 template <typename... Args>
 extern AString & Printf(AString & a_Dst, const char * format, const Args & ... args)
 {
-	//ASSERT(format != nullptr);
-	a_Dst = "";//fmt::sprintf(format, args...);
+	a_Dst = fmt::sprintf(format, args...);
 	return a_Dst;
 }
 
@@ -38,8 +37,7 @@ Returns the formatted string by value. */
 template <typename... Args>
 extern AString Printf(const char * format, const Args & ... args)
 {
-	//ASSERT(format != nullptr);
-	return "";//fmt::sprintf(format, args...);
+	return fmt::sprintf(format, args...);
 }
 
 /** Add the formated string to the existing data in the string.
