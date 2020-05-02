@@ -38,7 +38,8 @@ for:
   - if not exist %BUILD_DIR% mkdir %BUILD_DIR%
   - cd %BUILD_DIR%
   - echo %TIME%
-  - cmake -G "Visual Studio 16 2019" -A "x64" -DSELF_TEST=1 -DBUILD_TOOLS=1 ..
+  # TODO: re-add -DSELF_TEST=YES -DBUILD_TOOLS=YES once PCH for tools enabled (too slow otherwise)
+  - cmake -G "Visual Studio 16 2019" -A "x64" -DSELF_TEST=NO -DBUILD_TOOLS=NO ..
   - echo %TIME%
   - cd ..
 

@@ -9,7 +9,7 @@
 
 
 // Friar Tuck: oh Robin Hood, if we are to be removed, we shall be removed together!
-// TODO: remove here and in src/CMakeLists
+// TODO: remove here and in src\CMakeLists
 #pragma once
 
 

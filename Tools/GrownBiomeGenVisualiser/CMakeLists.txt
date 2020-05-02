@@ -1,4 +1,5 @@
 project (GrownBiomeGenVisualiser)
+find_package(Threads REQUIRED)
 
 # Set include paths to the used libraries:
 include_directories(SYSTEM "../../lib")
@@ -76,6 +77,6 @@ add_executable(GrownBiomeGenVisualiser
 	${SHARED_OSS_HDR}
 )
 
-target_link_libraries(GrownBiomeGenVisualiser fmt::fmt)
+target_link_libraries(GrownBiomeGenVisualiser fmt::fmt Threads::Threads)
 
 set_target_properties(GrownBiomeGenVisualiser PROPERTIES FOLDER Tools)

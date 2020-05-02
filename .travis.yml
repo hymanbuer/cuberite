@@ -15,6 +15,7 @@ matrix:
   include:
 
   - compiler: clang
+    cache: false # Fails on precompiled headers otherwise
     before_install: &use-cmake
     - export PATH=/snap/bin/:${PATH}
 
@@ -26,6 +27,6 @@ matrix:
 
 script:
 - cmake -E make_directory Build/
-- cmake -E chdir Build/ cmake ..
+- cmake -E chdir Build/ cmake -DBUILD_TOOLS=YES -DSELF_TEST=YES ..
 - cmake -E chdir Build/ cmake --build . --parallel 2
 - cmake -E chdir Build/ ctest . --parallel 2

@@ -1,4 +1,5 @@
 project (ProtoProxy)
+find_package(Threads REQUIRED)
 
 # Set include paths to the used libraries:
 include_directories(SYSTEM "../../lib")
@@ -91,5 +92,4 @@ add_executable(ProtoProxy
 	${SHARED_OSS_HDR}
 )
 
-target_link_libraries(ProtoProxy zlib mbedtls fmt::fmt)
-
+target_link_libraries(ProtoProxy zlib mbedtls fmt::fmt Threads::Threads)

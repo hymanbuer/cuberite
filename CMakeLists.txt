@@ -14,7 +14,12 @@
 
 
 cmake_minimum_required (VERSION 3.16)
-project(Cuberite C CXX)
+project(
+	Cuberite
+	DESCRIPTION "A lightweight, fast and extensible game server for Minecraft"
+	HOMEPAGE_URL "http://cuberite.org"
+	LANGUAGES C CXX
+)
 
 set(BUILD_TOOLS OFF CACHE BOOL "")
 set(SELF_TEST OFF CACHE BOOL "")
@@ -55,4 +60,4 @@ include("CMake/ConditionallyBuildTools.cmake")
 include("CMake/Fixups.cmake")
 include("CMake/GenerateBindings.cmake")
 include("CMake/GroupSources.cmake")
-include("CMake/MSVCFlags.cmake")
+include("CMake/SetCompilerFlags.cmake")

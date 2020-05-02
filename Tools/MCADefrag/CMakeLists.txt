@@ -1,4 +1,5 @@
 project (MCADefrag)
+find_package(Threads REQUIRED)
 
 # Set include paths to the used libraries:
 include_directories(SYSTEM "../../lib")
@@ -82,4 +83,4 @@ add_executable(MCADefrag
 	${SHARED_OSS_HDR}
 )
 
-target_link_libraries(MCADefrag zlib fmt::fmt)
+target_link_libraries(MCADefrag zlib fmt::fmt Threads::Threads)
