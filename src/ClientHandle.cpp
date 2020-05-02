@@ -1755,6 +1755,12 @@ void cClientHandle::HandleUseEntity(UInt32 a_TargetEntityID, bool a_IsLeftClick)
 	// If it is a left click, attack the entity:
 	m_Player->GetWorld()->DoWithEntityByID(a_TargetEntityID, [=](cEntity & a_Entity)
 		{
+			if (!a_Entity.IsTicking())
+			{
+				// The entity hasn't spawned yet, ignore
+				return true;
+			}
+
 			if (!a_Entity.GetWorld()->IsPVPEnabled())
 			{
 				// PVP is disabled, disallow players hurting other players:
