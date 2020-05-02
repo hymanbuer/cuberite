@@ -59,11 +59,43 @@ public:
 
 	void Run(void);
 
-	void Log(const char * a_Format, fmt::ArgList);
-	FMT_VARIADIC(void, Log, const char *)
+	template <typename... Args>
+	void Log(const char * a_Format, const Args ... a_Args)
+	{
+//		fmt::MemoryWriter FullMsg;
+//		fmt::printf(FullMsg, "[%5.3f] ", GetRelativeTime());
+//		fmt::printf(FullMsg, a_Format, a_Args...);
+//		fmt::printf(FullMsg, "\n");
+//
+//		// Log to file:
+//		cCSLock Lock(m_CSLog);
+//		fputs(FullMsg.c_str(), m_LogFile);
+//#ifdef _DEBUG
+//		fflush(m_LogFile);
+//#endif  // _DEBUG
 
-	void DataLog(const void * a_Data, size_t a_Size, const char * a_Format, fmt::ArgList);
-	FMT_VARIADIC(void, DataLog, const void *, size_t, const char *)
+		// Log to screen:
+		// std::cout << FullMsg;
+	}
+
+	template <typename... Args>
+	void DataLog(const void * a_Data, size_t a_Size, const char * a_Format, const Args ... a_Args)
+	{
+		//fmt::MemoryWriter FullMsg;
+		//fmt::printf(FullMsg, "[%5.3f] ", GetRelativeTime());
+		//fmt::printf(FullMsg, a_Format, a_Args...);
+		//AString Hex;
+		//fmt::printf(FullMsg, "\n%s\n", CreateHexDump(Hex, a_Data, a_Size, 16));
+
+		//// Log to file:
+		//cCSLock Lock(m_CSLog);
+		//fputs(FullMsg.c_str(), m_LogFile);
+
+		/*
+		// Log to screen:
+		std::cout << FullMsg;
+		//*/
+	}
 
 	void LogFlush(void);
 

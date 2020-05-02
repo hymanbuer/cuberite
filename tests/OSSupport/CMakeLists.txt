@@ -1,3 +1,4 @@
+find_package(Threads REQUIRED)
 include_directories(${CMAKE_SOURCE_DIR}/src/)
 
 # Create a single OSSupport library that contains all the OSSupport code used in the tests:
@@ -22,7 +23,7 @@ target_link_libraries(OSSupport PUBLIC fmt::fmt)
 
 # StressEvent: Stress-test the cEvent implementation:
 add_executable(StressEvent-exe StressEvent.cpp)
-target_link_libraries(StressEvent-exe OSSupport fmt::fmt)
+target_link_libraries(StressEvent-exe OSSupport fmt::fmt Threads::Threads)
 add_test(NAME StressEvent-test COMMAND StressEvent-exe)
 
 

@@ -1,5 +1,5 @@
 language: cpp
-# cache: ccache
+cache: ccache
 
 # Use Linux by default
 os: linux
@@ -28,3 +28,4 @@ script:
 - cmake -E make_directory Build/
 - cmake -E chdir Build/ cmake ..
 - cmake -E chdir Build/ cmake --build . --parallel 2
+- cmake -E chdir Build/ ctest . --parallel 2

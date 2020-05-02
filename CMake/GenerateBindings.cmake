@@ -106,7 +106,6 @@ list(TRANSFORM BINDING_DEPENDENCIES PREPEND "${CMAKE_CURRENT_SOURCE_DIR}/src/")
 # Generate the bindings:
 add_custom_command(
 	OUTPUT ${BINDING_OUTPUTS}
-	BYPRODUCTS ${BINDING_OUTPUTS} # For Ninja and make clean
 	COMMAND luaexe BindingsProcessor.lua
 	WORKING_DIRECTORY ${BINDINGS_FOLDER}
 	DEPENDS ${BINDING_DEPENDENCIES} luaexe

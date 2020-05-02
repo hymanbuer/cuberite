@@ -1,3 +1,4 @@
+find_package(Threads REQUIRED)
 include_directories(${CMAKE_SOURCE_DIR}/src/)
 include_directories(SYSTEM ${CMAKE_SOURCE_DIR}/lib/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -77,7 +78,7 @@ source_group("Shared" FILES ${SHARED_SRCS} ${SHARED_HDRS})
 source_group("Sources" FILES ${SRCS})
 source_group("Lua files" FILES Test.lua)
 add_executable(LuaThreadStress ${SRCS} ${SHARED_SRCS} ${SHARED_HDRS} Test.lua)
-target_link_libraries(LuaThreadStress tolualib zlib fmt::fmt)
+target_link_libraries(LuaThreadStress tolualib zlib fmt::fmt Threads::Threads)
 add_test(NAME LuaThreadStress-test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND LuaThreadStress)
 
 

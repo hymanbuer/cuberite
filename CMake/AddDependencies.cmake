@@ -16,12 +16,12 @@ set(EVENT__DISABLE_SAMPLES   YES CACHE BOOL   "Disable LibEvent samples"        
 set(EVENT__LIBRARY_TYPE "STATIC" CACHE STRING "Use static LibEvent libraries"     FORCE)
 
 # Set options for JsonCPP, disabling all of their tests
-# Additionally, their library is output to a strange location; make sure the linker knows where to find it
+# Additionally, their library is output to a strange location; make sure the linker knows where to find it:
 set(JSONCPP_WITH_TESTS OFF CACHE BOOL "Compile and (for jsoncpp_check) run JsonCpp test executables")
 set(JSONCPP_WITH_POST_BUILD_UNITTEST OFF CACHE BOOL "Automatically run unit-tests as a post build step")
 set(JSONCPP_WITH_PKGCONFIG_SUPPORT OFF CACHE BOOL "Generate and install .pc files")
 
-# Set options for mbedtls
+# Set options for mbedtls:
 set(ENABLE_PROGRAMS OFF CACHE BOOL "Build mbed TLS programs.")
 set(ENABLE_TESTING OFF CACHE BOOL "Build mbed TLS tests.")
 
@@ -68,7 +68,7 @@ endif()
 
 # Include all the libraries
 # We use EXCLUDE_FROM_ALL so that only the explicit dependencies are used
-# (mbedTLS also has test and example programs in their CMakeLists.txt, we don't want those)
+# (mbedTLS also has test and example programs in their CMakeLists.txt, we don't want those):
 add_subdirectory(lib/expat)
 add_subdirectory(lib/fmt)
 add_subdirectory(lib/jsoncpp)
@@ -94,30 +94,30 @@ target_include_directories(
 	PRIVATE lib # TODO fix files including zlib/x instead of x
 )
 
-# Link dependencies as private
+# Link dependencies as private:
 target_link_libraries(
 	${CMAKE_PROJECT_NAME}
 	PRIVATE event_core
 	PRIVATE event_extra
 	PRIVATE fmt::fmt
 	PRIVATE jsoncpp_lib_static
+	PRIVATE lsqlite
 	PRIVATE lua
 	PRIVATE luaexpat
 	PRIVATE mbedtls
-	PRIVATE lsqlite
 	PRIVATE SQLiteCpp
 	PRIVATE tolualib
 	PRIVATE zlib
 )
 
-# Special case handling for libevent pthreads
+# Special case handling for libevent pthreads:
 if(NOT WIN32)
 	target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE event_pthreads_static)
 endif()
 
-# Prettify jsoncpp_lib_static name in VS solution explorer
+# Prettify jsoncpp_lib_static name in VS solution explorer:
 set_property(TARGET jsoncpp_lib_static PROPERTY PROJECT_LABEL "jsoncpp")
 
 if (WIN32)
-	add_subdirectory(lib/luaproxy/)
+	add_subdirectory(lib/luaproxy)
 endif()

@@ -1,13 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
 project (MCADefrag)
-
-# Without this, the MSVC variable isn't defined for MSVC builds ( https://www.cmake.org/pipermail/cmake/2011-November/047130.html )
-enable_language(CXX C)
-
-include(../../SetFlags.cmake)
-set_flags()
-set_lib_flags()
-enable_profile()
 
 # Set include paths to the used libraries:
 include_directories(SYSTEM "../../lib")
@@ -27,8 +18,6 @@ endfunction()
 # Include the libraries:
 
 add_subdirectory(../../lib/zlib ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/lib/zlib)
-
-set_exe_flags()
 
 # Include the shared files:
 set(SHARED_SRC

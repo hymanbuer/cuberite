@@ -284,50 +284,6 @@ void cConnection::Run(void)
 
 
 
-void cConnection::Log(const char * a_Format, fmt::ArgList a_Args)
-{
-	fmt::MemoryWriter FullMsg;
-	fmt::printf(FullMsg, "[%5.3f] ", GetRelativeTime());
-	fmt::printf(FullMsg, a_Format, a_Args);
-	fmt::printf(FullMsg, "\n");
-
-	// Log to file:
-	cCSLock Lock(m_CSLog);
-	fputs(FullMsg.c_str(), m_LogFile);
-	#ifdef _DEBUG
-		fflush(m_LogFile);
-	#endif  // _DEBUG
-
-	// Log to screen:
-	// std::cout << FullMsg;
-}
-
-
-
-
-
-void cConnection::DataLog(const void * a_Data, size_t a_Size, const char * a_Format, fmt::ArgList a_Args)
-{
-	fmt::MemoryWriter FullMsg;
-	fmt::printf(FullMsg, "[%5.3f] ", GetRelativeTime());
-	fmt::printf(FullMsg, a_Format, a_Args);
-	AString Hex;
-	fmt::printf(FullMsg, "\n%s\n", CreateHexDump(Hex, a_Data, a_Size, 16));
-
-	// Log to file:
-	cCSLock Lock(m_CSLog);
-	fputs(FullMsg.c_str(), m_LogFile);
-
-	/*
-	// Log to screen:
-	std::cout << FullMsg;
-	//*/
-}
-
-
-
-
-
 void cConnection::LogFlush(void)
 {
 	fflush(m_LogFile);

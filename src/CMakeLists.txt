@@ -161,6 +161,7 @@ set(FOLDERS
 	BlockEntities UI Noise
 )
 
+# Add all child source directories:
 foreach(folder ${FOLDERS})
 	add_subdirectory(${folder})
 endforeach(folder)
@@ -174,6 +175,7 @@ configure_file("BuildInfo.h.cmake" "${CMAKE_BINARY_DIR}/include/BuildInfo.h")
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include/")
 target_precompile_headers(${CMAKE_PROJECT_NAME} PRIVATE Globals.h)
 
+# Link process information library:
 if (WIN32)
 	target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Psapi.lib)
 endif()

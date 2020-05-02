@@ -30,11 +30,11 @@ if(WIN32)
 endif()
 
 if(${BUILD_TOOLS})
-	#set_target_properties(
-		#MCADefrag
-		#ProtoProxy
-		#PROPERTIES FOLDER Tools
-	#)
+	set_target_properties(
+		MCADefrag
+		ProtoProxy
+		PROPERTIES FOLDER Tools
+	)
 endif()
 
 # Put all files into one project, separate by the folders:
